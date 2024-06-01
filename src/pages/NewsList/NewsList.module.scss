@@ -4,7 +4,18 @@
   flex-flow: column;
   gap: 20px;
   max-width: 50%;
+  button {
+    align-self: flex-start;
+    color: black;
+  }
+  .clicked {
+    background-color: var(--primary);
+  }
+  .unClicked {
+    background-color: var(--secondary);
+  }
   .container {
+    text-decoration: unset;
     .inner {
       display: flex;
       gap: 20px;
@@ -13,6 +24,7 @@
       }
       p {
         font-size: 4rem;
+        text-decoration: unset;
       }
     }
   }

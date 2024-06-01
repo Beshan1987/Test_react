@@ -9,5 +9,9 @@
   .inner {
     display: flex;
     flex-flow: column;
+    max-width: 70%;
+    h1 {
+      font-size: 4rem;
+    }
   }
 }

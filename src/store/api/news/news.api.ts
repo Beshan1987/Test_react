@@ -1,7 +1,7 @@
 import { baseApi } from "..";
 import { News } from "../../../entities/apiTypes";
 
-export const bonusApi = baseApi.injectEndpoints({
+export const newsApi = baseApi.injectEndpoints({
   overrideExisting: false,
   endpoints: (build) => ({
     getNews: build.query<News, number>({
@@ -28,4 +28,4 @@ export const bonusApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetNewsQuery, useGetNewsListQuery } = bonusApi;
+export const { useGetNewsQuery, useGetNewsListQuery } = newsApi;
