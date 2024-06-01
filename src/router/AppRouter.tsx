@@ -4,6 +4,7 @@ import { MainLayout } from "../layouts/MainLayout/MainLayout";
 import { MainPage } from "../pages/MainPage/MainPage";
 import { Page404 } from "~/pages/Page404/Page404";
 import { NewsList } from "~/pages/NewsList/NewsList";
+import { NewsItem } from "~/pages/NewsItem/NewsItem";
 
 const routerSchema = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const routerSchema = createBrowserRouter([
       {
         path: "/news",
         element: <NewsList />,
+      },
+      {
+        path: "/news/:id",
+        element: <NewsItem />,
       },
     ],
   },

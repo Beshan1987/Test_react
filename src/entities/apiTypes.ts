@@ -1,5 +1,7 @@
 export interface News {
+  albumId: number;
+  id: number;
   title: string;
-  date: string;
-  img: string;
+  url: string;
+  thumbnailUrl: string;
 }

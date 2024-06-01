@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-flow: column;
+  gap: 20px;
+  button {
+    padding: 10px;
+    align-self: flex-start;
+  }
+  .inner {
+    display: flex;
+    flex-flow: column;
+  }
+}

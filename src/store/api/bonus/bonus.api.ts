@@ -4,15 +4,15 @@ import { News } from "../../../entities/apiTypes";
 export const bonusApi = baseApi.injectEndpoints({
   overrideExisting: false,
   endpoints: (build) => ({
-    getNews: build.query<News, { id: string }>({
-      query: ({ id }) => ({
-        url: `News/${id}`,
+    getNews: build.query<News, number>({
+      query: (id) => ({
+        url: `photos/${id}`,
       }),
       providesTags: [{ type: "NEWS", id: "LIST" }],
     }),
-    getNewsList: build.query<News, void>({
+    getNewsList: build.query<News[], void>({
       query: () => ({
-        url: ``,
+        url: `photos`,
       }),
       providesTags: (result) =>
         result
