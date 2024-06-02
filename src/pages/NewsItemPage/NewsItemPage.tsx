@@ -9,7 +9,7 @@ import { NewsList } from "~/features/NewsList/NewsList";
 export const NewsItemPage = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { data: newsItem, isLoading } = useGetNewsQuery(Number(id));
+  const { data: newsItem, isLoading, error } = useGetNewsQuery(Number(id));
   const navigate = useNavigate();
 
   return (
@@ -23,6 +23,9 @@ export const NewsItemPage = () => {
           </Button>
           <NewsList newsItem={newsItem} />
         </div>
+      )}
+      {error && "status" in error && (
+        <div className={styles.error}>{error.status}</div>
       )}
     </>
   );

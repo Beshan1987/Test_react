@@ -7,8 +7,10 @@ import { NewsList } from "~/features/NewsList/NewsList";
 import { makeSorted } from "~/shared/utils/makeSorted";
 
 export const NewsListPage = () => {
-  const { data: newsList, isLoading } = useGetNewsListQuery();
+  const { data: newsList, isLoading, error } = useGetNewsListQuery();
   const [sorted, setSorted] = useState(false);
+
+  console.log(error);
 
   const toggleSort = () => {
     setSorted((sort) => !sort);
@@ -32,6 +34,9 @@ export const NewsListPage = () => {
             newsList && (
               <NewsList newsList={makeSorted({ newsList, sliceAmount: 20 })} />
             )
+          )}
+          {error && "status" in error && (
+            <div className={styles.error}>{error.status}</div>
           )}
         </div>
       )}

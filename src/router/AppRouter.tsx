@@ -3,7 +3,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "../layouts/MainLayout/MainLayout";
 import { MainPage } from "../pages/MainPage/MainPage";
 import { Page404 } from "~/pages/Page404/Page404";
-import { NewsListPage } from "~/pages/NewsList/NewsListPage";
+import { NewsListPage } from "~/pages/NewsListPage/NewsListPage";
 import { NewsItemPage } from "~/pages/NewsItemPage/NewsItemPage";
 
 const routerSchema = createBrowserRouter([
