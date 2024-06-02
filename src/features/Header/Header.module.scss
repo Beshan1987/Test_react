@@ -3,18 +3,14 @@ header {
   border-bottom: 1px solid var(--primary);
 }
 .container {
-  min-height: 110px;
+  min-height: 10rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
   position: sticky;
   background-color: #fff;
-  z-index: 100;
-  position: sticky;
-  top: 0;
-  overflow: hidden;
-  margin: 0 auto;
+  margin: 2rem auto;
 }
 .btn_container {
   .buttons {
@@ -35,11 +31,8 @@ header {
 }
 @media only screen and (max-width: 750px) {
   .container {
-    flex-flow: column;
+    padding: unset;
+    margin: 0 5%;
     align-items: center;
-    padding: 20px;
-    svg {
-      padding-top: 40px;
-    }
   }
 }

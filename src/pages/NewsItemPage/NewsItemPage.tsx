@@ -2,10 +2,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "~/shared/ui/Button/Button";
 import { useGetNewsQuery } from "~/store/api/news/news.api";
 
-import styles from "./NewsItem.module.scss";
+import styles from "./NewsItemPage.module.scss";
 import { Loader } from "~/shared/ui/Loader/Loader";
+import { NewsList } from "~/features/NewsList/NewsList";
 
-export const NewsItem = () => {
+export const NewsItemPage = () => {
   const { id } = useParams<{ id: string }>();
 
   const { data: newsItem, isLoading } = useGetNewsQuery(Number(id));
@@ -14,16 +15,13 @@ export const NewsItem = () => {
   return (
     <>
       {isLoading ? (
-        <Loader></Loader>
+        <Loader />
       ) : (
         <div className={styles.container}>
           <Button onClick={() => navigate(-1)} appearance="secondary">
             Back
           </Button>
-          <div className={styles.inner}>
-            <h1>{newsItem?.title}</h1>
-            <img src={newsItem?.thumbnailUrl}></img>
-          </div>
+          <NewsList newsItem={newsItem} />
         </div>
       )}
     </>

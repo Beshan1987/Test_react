@@ -3,8 +3,8 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { MainLayout } from "../layouts/MainLayout/MainLayout";
 import { MainPage } from "../pages/MainPage/MainPage";
 import { Page404 } from "~/pages/Page404/Page404";
-import { NewsList } from "~/pages/NewsList/NewsList";
-import { NewsItem } from "~/pages/NewsItem/NewsItem";
+import { NewsListPage } from "~/pages/NewsList/NewsListPage";
+import { NewsItemPage } from "~/pages/NewsItemPage/NewsItemPage";
 
 const routerSchema = createBrowserRouter([
   {
@@ -17,11 +17,11 @@ const routerSchema = createBrowserRouter([
       },
       {
         path: "/news",
-        element: <NewsList />,
+        element: <NewsListPage />,
       },
       {
         path: "/news/:id",
-        element: <NewsItem />,
+        element: <NewsItemPage />,
       },
     ],
   },
