@@ -11,6 +11,11 @@
       font-size: 3rem;
       display: flex;
       gap: 2rem;
+      input {
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
   }
   button {
