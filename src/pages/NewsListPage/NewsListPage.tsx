@@ -1,19 +1,28 @@
 import { useGetNewsListQuery } from "~/store/api/news/news.api";
 import styles from "./NewsListPage.module.scss";
 import { Loader } from "~/shared/ui/Loader/Loader";
-import { useState } from "react";
-import { Button } from "~/shared/ui/Button/Button";
+import { ChangeEvent, useEffect, useState } from "react";
 import { NewsList } from "~/features/NewsList/NewsList";
-import { makeSorted } from "~/shared/utils/makeSorted";
+import debounce from "lodash/debounce";
 
 export const NewsListPage = () => {
   const { data: newsList, isLoading, error } = useGetNewsListQuery();
-  const [sorted, setSorted] = useState(false);
 
-  console.log(error);
+  const [filteredData, setFilteredData] = useState(newsList);
+  const [filterDate, setFilterDate] = useState("");
 
-  const toggleSort = () => {
-    setSorted((sort) => !sort);
+  useEffect(() => {
+    const debouncedFilterData = debounce(() => {
+      filterDate && newsList
+        ? setFilteredData(newsList.filter((item) => item.title === filterDate))
+        : setFilteredData(newsList);
+    }, 500);
+
+    debouncedFilterData();
+  }, [newsList, filterDate]);
+
+  const handleFilterDateChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setFilterDate(event.target.value);
   };
 
   return (
@@ -22,18 +31,20 @@ export const NewsListPage = () => {
         <Loader />
       ) : (
         <div className={styles.wrapper}>
-          <Button
-            onClick={() => toggleSort()}
-            appearance={sorted ? "primary" : "secondary"}
-          >
-            {sorted ? "Unsorted" : "Sorted"}
-          </Button>
-          {!sorted && newsList ? (
-            <NewsList newsList={newsList} sliceAmount={20} />
+          <div className={styles.search}>
+            <label>
+              Filter by date:
+              <input
+                type="date"
+                value={filterDate}
+                onChange={handleFilterDateChange}
+              />
+            </label>
+          </div>
+          {filterDate ? (
+            <NewsList newsList={filteredData} sliceAmount={20} /> // sliceAmount is an option, temporary
           ) : (
-            newsList && (
-              <NewsList newsList={makeSorted({ newsList, sliceAmount: 20 })} />
-            )
+            <NewsList newsList={newsList} sliceAmount={20} /> // sliceAmount is an option, temporary
           )}
           {error && "status" in error && (
             <div className={styles.error}>{error.status}</div>

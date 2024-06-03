@@ -7,10 +7,12 @@ export const NewsList = ({
   newsList,
   newsItem,
   sliceAmount,
+  datePeriod,
 }: {
   newsList?: News[];
   newsItem?: News;
   sliceAmount?: number;
+  datePeriod?: number;
 }) => {
   return (
     <>
