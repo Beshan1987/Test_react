@@ -6,13 +6,13 @@ export const newsApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getNews: build.query<News, number>({
       query: (id) => ({
-        url: `photos/${id}`,
+        url: `posts/${id}`,
       }),
       providesTags: [{ type: "NEWS", id: "LIST" }],
     }),
     getNewsList: build.query<News[], void>({
       query: () => ({
-        url: `photos`,
+        url: `posts`,
       }),
       providesTags: (result) =>
         result

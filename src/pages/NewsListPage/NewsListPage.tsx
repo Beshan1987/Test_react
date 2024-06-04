@@ -6,7 +6,7 @@ import { NewsList } from "~/features/NewsList/NewsList";
 import debounce from "lodash/debounce";
 import { Socket, io } from "socket.io-client";
 import { News } from "~/entities/apiTypes";
-import { API_URL } from "~/store/api/constants";
+import { BACKEND_BASE_URL } from "~/store/api/constants";
 
 export const NewsListPage = () => {
   const { data: newsList, isLoading, error } = useGetNewsListQuery();
@@ -18,10 +18,10 @@ export const NewsListPage = () => {
 
   useEffect(() => {
     if (!socket) {
-      const newSocket = io(API_URL);
+      const newSocket = io(BACKEND_BASE_URL);
       setSocket(newSocket);
 
-      newSocket.on("news", (data: News[]) => {
+      newSocket.on("posts", (data: News[]) => {
         setSocketNews(data);
       });
 
